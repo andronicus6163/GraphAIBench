@@ -25,8 +25,8 @@ tc_gpu_compressed: $(OBJS) $(CGOBJS) $(CGCUOBJS) tc_gpu_compressed.o
 	mv $@ $(BIN)
 #	$(CXX) $(CXXFLAGS) $(INCLUDES) tc_gpu_compressed.o $(OBJS) $(CGOBJS) $(CGCUOBJS) -o $@ $(LIBS) $(NVLIBS)
 
-verify_compression: verify_compression.o $(OBJS)
-	$(CXX) $(CXXFLAGS) $(INCLUDES) verify_compression.o $(OBJS) -o $@ $(LIBS)
+verify_compression: verify_compression.o $(OBJS) $(CGOBJS)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) verify_compression.o $(OBJS) $(CGOBJS) -o $@ $(LIBS)
 	mv $@ $(BIN)
 
 query_graph_info: query_graph_info.o $(OBJS)

@@ -58,9 +58,9 @@
 #define WARP_SIZE 32
 #define MAX_NUM_CLASSES 128
 #define WARPS_PER_BLOCK (BLOCK_SIZE / WARP_SIZE)
-#define ENABLE_GPU
+// ENABLE_GPU comes from the Makefile (USE_GPU=1 / CUFLAGS); USE_GGNN from GNN_GGNN=1.
+// Hardcoding them here broke every CPU build (cuda.h, and GGNN has no CPU layers).
 // #define USE_CUSPARSE
-#define USE_GGNN
 
  
 enum class net_phase { TRAIN, TEST, VAL };

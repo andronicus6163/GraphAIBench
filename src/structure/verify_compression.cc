@@ -18,8 +18,7 @@ int main(int argc,char *argv[]) {
   std::cout << "Start comparison\n";
   //#pragma omp parallel for
   for (vidType v = 0; v < g.V(); v++) {
-    VertexSet adj_v(v); // u's adjacency list
-    cg.decode_vertex(v, adj_v, true);
+    VertexSet adj_v = cg.N_cgr(v, true); // u's adjacency list
     auto deg = g.get_degree(v);
     auto c_deg = adj_v.size();
     if (deg != c_deg) {

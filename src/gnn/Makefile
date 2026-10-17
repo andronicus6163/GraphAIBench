@@ -43,6 +43,11 @@ ifeq ($(GNN_GAT), 1)
 	CUFLAGS += -DUSE_GAT
 endif
 
+ifeq ($(GNN_GGNN), 1)
+	CFLAGS += -DUSE_GGNN
+	CUFLAGS += -DUSE_GGNN
+endif
+
 ifeq ($(USE_GPU), 1)
 	CFLAGS += -DENABLE_GPU
 endif

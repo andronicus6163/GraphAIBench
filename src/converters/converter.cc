@@ -38,7 +38,7 @@ void Converter::adjlist2CSR() {
     std::cout << "]\n";
   }
   */
-  g = new Graph(nv, ne);
+  g = new Graph(vidType(nv), eidType(ne));
   degrees.resize(nv);
   for (vidType i = 0; i < g->V(); i ++)
     degrees[i] = adj_lists[i].size();
@@ -67,7 +67,7 @@ void Converter::adjlist2CSR() {
 void Converter::weighted_adjlist2CSR() {
   printf("|V| %ld |E| %ld\n", nv, ne);
   weights.resize(ne);
-  g = new Graph(nv, ne);
+  g = new Graph(vidType(nv), eidType(ne));
   degrees.resize(nv);
   for (vidType i = 0; i < g->V(); i ++)
     degrees[i] = weighted_adj_lists[i].size();
@@ -112,7 +112,7 @@ void Converter::weighted_edgelist2CSR() {
   // build CSR
   degrees.resize(nv);
   CountDegrees(el);
-  g = new Graph(nv, ne);
+  g = new Graph(vidType(nv), eidType(ne));
   std::vector<eidType> offsets(nv+1);
   parallel_prefix_sum<vidType,eidType>(degrees, offsets.data());
 
@@ -471,7 +471,7 @@ void Converter::readGraphFromGRFile(std::string filename, bool need_sort) {
     //exit(1);
   }
   std::cout << "constructing CSR: nv " << nv << " ne " << ne << "\n";
-  g = new Graph(nv, ne);
+  g = new Graph(vidType(nv), eidType(ne));
   auto rowptr = g->out_rowptr();
   #pragma omp parallel for
   for (vidType vid = 0; vid < g->V(); ++vid) {

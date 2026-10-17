@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 
   Converter converter;
   std::cout << argv[1] << "\n";
-  assert(argv[1] == "gr");
+  assert(std::string(argv[1]) == "gr");  // was a char* pointer comparison, always false
   converter.splitGRFile(argv[2], argv[3]);
   if (need_sort) {
     Graph g(argv[2]);

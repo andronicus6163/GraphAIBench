@@ -23,7 +23,9 @@ void WriteDendrogramToDisk(Weights& wgh, Dendrogram& dendrogram,
 }
 
 int main(int argc, char* argv[]) {
-  Graph G(argv[1]);
+  // HAC reads edge weights via get_elabel(), so edge labels must be loaded
+  // (prefix, use_dag, directed, use_vlabel, use_elabel)
+  Graph G(argv[1], false, false, false, true);
   bool heap_based = true; // P.getOptionValue("-heapbased");
   std::string linkage_opt = "complete"; //P.getOptionValue("-linkage", "complete");01~
   std::cout << "### Application: HAC" << std::endl;

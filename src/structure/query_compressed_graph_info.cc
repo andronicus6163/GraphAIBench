@@ -12,7 +12,7 @@ int main(int argc,char *argv[]) {
  
   int v = atoi(argv[2]);
   //auto deg = g.get_degree(v);
-  auto adj = g.N_compressed(v, true);
+  VertexSet adj = g.N_cgr(v, true);
   std::cout << "vertex " << v << " degree " << adj.size() << "\n";
   for (size_t i = 0; i < (adj.size()>10?10:adj.size()); i++) {
     std::cout << "neighbor[" << i << "]=" << adj[i] << "\n";

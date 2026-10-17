@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
   if (argc > 3) chunk_size = atoi(argv[3]);
   g.print_meta_data();
   uint64_t total = 0;
-  PartitionedGraph(g, n_devices);
+  PartitionedGraph pg(&g, n_devices);
   //std::cout << "total_num_triangles = " << total << "\n";
   return 0;
 }

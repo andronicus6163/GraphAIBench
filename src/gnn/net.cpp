@@ -151,7 +151,7 @@ void Model<gconv_layer>::load_data(int argc, char* argv[]) {
     printf("labels[%d] = %i\n", i, labels[i]);
   }
 
-  exit(0);
+  // exit(0);  // leftover debug exit: stopped every GNN run before training
 
 
   // for sampling
@@ -617,4 +617,6 @@ void Model<gconv_layer>::backward_prop() {
 template class Model<GCN_layer>;
 template class Model<GAT_layer>;
 template class Model<SAGE_layer>;
+#ifdef ENABLE_GPU  // GGNN layers exist only as CUDA sources
 template class Model<GGNN_layer>;
+#endif

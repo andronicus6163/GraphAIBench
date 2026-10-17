@@ -1,4 +1,5 @@
 include ../common.mk
+VPATH += ../partitioner
 OBJS = VertexSet.o graph.o graph_partition.o
 NVFLAGS += -dc
 INCLUDES += -I$(NVSHMEM_HOME)/include -I$(MPI_HOME)/include
